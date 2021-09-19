@@ -2,6 +2,8 @@ package com.lccoding.currencyapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.lccoding.currencyapp.data.local.CurrencyEntity
+import com.lccoding.currencyapp.domain.use_case.add_currencies.AddCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.get_currencies.GetCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.sort_currencies.SortCurrenciesUseCase
 import com.lccoding.currencyapp.presentation.ui.curreny_list.components.CurrencyListState
@@ -38,6 +40,9 @@ class CurrencyViewModelTest {
     @MockK
     private lateinit var sortCurrenciesUseCase: SortCurrenciesUseCase
 
+    @MockK
+    private lateinit var addCurrenciesUseCase: AddCurrenciesUseCase
+
     private lateinit var currencyViewModel: CurrencyViewModel
 
     @Mock
@@ -47,7 +52,13 @@ class CurrencyViewModelTest {
     fun setup() {
         getCurrenciesUseCase = GetCurrenciesUseCase(FakeCurrencyRepository())
         sortCurrenciesUseCase = SortCurrenciesUseCase(FakeCurrencyRepository())
-        currencyViewModel = CurrencyViewModel(getCurrenciesUseCase, sortCurrenciesUseCase).apply {
+        addCurrenciesUseCase = AddCurrenciesUseCase(FakeCurrencyRepository())
+
+        currencyViewModel = CurrencyViewModel(
+            getCurrenciesUseCase,
+            sortCurrenciesUseCase,
+            addCurrenciesUseCase
+        ).apply {
             state.observeForever(viewStateObserver)
         }
     }
@@ -82,5 +93,18 @@ class CurrencyViewModelTest {
         currencyViewModel.getCurrencies()
         val state = getValue(currencyViewModel.state)
         Assert.assertTrue(state.currencies.isEmpty())
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun addCurrencyAndObserveResultIsNotEmpty() = runBlocking {
+        val setA = CurrencyEntity(id = "abc", name = "123", symbol = "abc123")
+        val setB = CurrencyEntity(id = "def", name = "456", symbol = "def456")
+        val list = listOf(setA, setB)
+
+        currencyViewModel.addCurrencies(list)
+//        currencyViewModel.getCurrencies()
+        val state = getValue(currencyViewModel.state)
+        Assert.assertTrue(state.currencies.isNotEmpty())
     }
 }

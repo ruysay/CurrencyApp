@@ -6,4 +6,6 @@ interface CurrencyRepository {
     suspend fun getCurrencies(): List<CurrencyEntity>
 
     suspend fun getSortedCurrencies(): List<CurrencyEntity>
+
+    suspend fun addCurrencies(list: List<CurrencyEntity>)
 }

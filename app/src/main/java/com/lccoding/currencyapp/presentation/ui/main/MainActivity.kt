@@ -1,5 +1,6 @@
 package com.lccoding.currencyapp.presentation.ui.main
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -9,7 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationBarView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.lccoding.currencyapp.R
+import com.lccoding.currencyapp.common.SharedPreferenceUtil
+import com.lccoding.currencyapp.data.dao.CurrencyDao
+import com.lccoding.currencyapp.data.local.CurrencyEntity
 import com.lccoding.currencyapp.databinding.ActivityMainBinding
 import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyListFragmentDirections
 import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyViewModel
@@ -30,6 +36,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         navController = findNavController(R.id.nav_host_fragment_content_main)
         setupBottomNavBar()
         setupSelectedItemObserver()
+        initFirstLaunchData()
+
     }
 
     private fun setupSelectedItemObserver() {
@@ -48,6 +56,18 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     private fun setupBottomNavBar() {
         binding.mainBottomNavView.menu.setGroupCheckable(0, false, true)
         binding.mainBottomNavView.setOnItemSelectedListener(this)
+    }
+
+    private fun initFirstLaunchData() {
+        if(SharedPreferenceUtil(application).isFirstLaunch()) {
+            val jsonString = resources.openRawResource(R.raw.currencies).bufferedReader().use {
+                it.readText()
+            }
+            val typeToken = object : TypeToken<List<CurrencyEntity>>() {}.type
+            val currencies = Gson().fromJson<List<CurrencyEntity>>(jsonString, typeToken)
+            currencyViewModel.addCurrencies(currencies)
+            SharedPreferenceUtil(application).setFirstLaunch(false)
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -1,6 +1,7 @@
 package com.lccoding.currencyapp.di
 
 import android.app.Application
+import com.lccoding.currencyapp.common.SharedPreferenceUtil
 import com.lccoding.currencyapp.data.local.CurrencyDatabase
 import com.lccoding.currencyapp.data.repository.CurrencyRepositoryImpl
 import com.lccoding.currencyapp.domain.repository.CurrencyRepository
@@ -16,7 +17,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    //database instance
     @Provides
     @Singleton
     fun provideDataBase(app: Application): CurrencyDatabase {
@@ -25,11 +25,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCurrencyRepository(db: CurrencyDatabase, app: Application): CurrencyRepository {
-        // the application instance is used to populating DB, we don't really need to inject it
-        return CurrencyRepositoryImpl(db.getCurrencyDao(), app)
+    fun provideCurrencyRepository(db: CurrencyDatabase): CurrencyRepository {
+        return CurrencyRepositoryImpl(db.getCurrencyDao())
     }
 
     @Provides
     fun provideCoroutineScopeIO() = CoroutineScope(Dispatchers.IO)
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferenceUtil(app: Application): SharedPreferenceUtil {
+        return SharedPreferenceUtil(app)
+    }
 }

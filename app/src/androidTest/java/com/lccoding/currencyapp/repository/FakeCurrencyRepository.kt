@@ -13,4 +13,8 @@ class FakeCurrencyRepository : CurrencyRepository {
     override suspend fun getSortedCurrencies(): List<CurrencyEntity> {
         return currencyItems
     }
+
+    override suspend fun addCurrencies(list: List<CurrencyEntity>) {
+        currencyItems.addAll(list)
+    }
 }

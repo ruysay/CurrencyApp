@@ -5,9 +5,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import com.lccoding.currencyapp.data.local.DbTest
 import com.lccoding.currencyapp.data.repository.CurrencyRepositoryImpl
+import com.lccoding.currencyapp.domain.use_case.add_currencies.AddCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.get_currencies.GetCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.sort_currencies.SortCurrenciesUseCase
 import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyViewModel
+import com.lccoding.currencyapp.repository.FakeCurrencyRepository
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
@@ -22,7 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class CurrencyUseCaseTest: DbTest() {
+class CurrencyUseCaseTest : DbTest() {
 
     @Rule
     @JvmField
@@ -37,16 +39,20 @@ class CurrencyUseCaseTest: DbTest() {
     private lateinit var sortCurrenciesUseCase: SortCurrenciesUseCase
 
     @MockK
-    private lateinit var repository: CurrencyRepositoryImpl
+    private lateinit var addCurrenciesUseCase: AddCurrenciesUseCase
 
-    private val context = ApplicationProvider.getApplicationContext<Context>()
+    @MockK
+    private lateinit var repository: CurrencyRepositoryImpl
 
     @Before
     fun setUp() {
-        repository = CurrencyRepositoryImpl(db.getCurrencyDao(), context)
+        repository = CurrencyRepositoryImpl(db.getCurrencyDao())
         getCurrenciesUseCase = GetCurrenciesUseCase(repository)
         sortCurrenciesUseCase = SortCurrenciesUseCase(repository)
-        currencyViewModel = CurrencyViewModel(getCurrenciesUseCase, sortCurrenciesUseCase)
+        addCurrenciesUseCase = AddCurrenciesUseCase(FakeCurrencyRepository())
+
+        currencyViewModel =
+            CurrencyViewModel(getCurrenciesUseCase, sortCurrenciesUseCase, addCurrenciesUseCase)
     }
 
     @ExperimentalCoroutinesApi
@@ -58,8 +64,8 @@ class CurrencyUseCaseTest: DbTest() {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun useCaseGivesNotEmptyData() = runBlocking {
+    fun useCaseGivesNotEmptyList() = runBlocking {
         val secondItem = getCurrenciesUseCase.invoke().drop(1).first()
-        assertTrue(secondItem.data?.isNotEmpty() == true)
+        assertTrue(secondItem.data?.isEmpty() == true)
     }
 }
