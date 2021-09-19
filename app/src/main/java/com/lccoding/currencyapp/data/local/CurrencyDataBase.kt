@@ -7,7 +7,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [CurrencyEntity::class], version = 1)
+@Database(entities = [CurrencyInfo::class], version = 1)
 abstract class CurrencyDatabase : RoomDatabase() {
     abstract fun getCurrencyDao(): CurrencyDao
 

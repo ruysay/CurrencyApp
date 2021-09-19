@@ -1,6 +1,5 @@
 package com.lccoding.currencyapp.presentation.ui.main
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -14,8 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.lccoding.currencyapp.R
 import com.lccoding.currencyapp.common.SharedPreferenceUtil
-import com.lccoding.currencyapp.data.dao.CurrencyDao
-import com.lccoding.currencyapp.data.local.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyInfo
 import com.lccoding.currencyapp.databinding.ActivityMainBinding
 import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyListFragmentDirections
 import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyViewModel
@@ -63,8 +61,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             val jsonString = resources.openRawResource(R.raw.currencies).bufferedReader().use {
                 it.readText()
             }
-            val typeToken = object : TypeToken<List<CurrencyEntity>>() {}.type
-            val currencies = Gson().fromJson<List<CurrencyEntity>>(jsonString, typeToken)
+            val typeToken = object : TypeToken<List<CurrencyInfo>>() {}.type
+            val currencies = Gson().fromJson<List<CurrencyInfo>>(jsonString, typeToken)
             currencyViewModel.addCurrencies(currencies)
             SharedPreferenceUtil(application).setFirstLaunch(false)
         }

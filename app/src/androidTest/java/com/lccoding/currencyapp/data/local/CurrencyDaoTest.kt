@@ -16,8 +16,8 @@ import org.junit.runner.RunWith
 class CurrencyDaoTest : DbTest() {
     private lateinit var currencyDao: CurrencyDao
 
-    private val setA = CurrencyEntity(id = "abc", name = "123", symbol = "abc123")
-    private val setB = CurrencyEntity(id = "def", name = "456", symbol = "def456")
+    private val setA = CurrencyInfo(id = "abc", name = "123", symbol = "abc123")
+    private val setB = CurrencyInfo(id = "def", name = "456", symbol = "def456")
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

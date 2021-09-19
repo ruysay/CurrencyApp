@@ -1,7 +1,7 @@
 package com.lccoding.currencyapp.domain.use_case.add_currencies
 
 import com.lccoding.currencyapp.common.Resource
-import com.lccoding.currencyapp.data.local.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyInfo
 import com.lccoding.currencyapp.data.local.toCurrency
 import com.lccoding.currencyapp.domain.model.Currency
 import com.lccoding.currencyapp.domain.repository.CurrencyRepository
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class AddCurrenciesUseCase @Inject constructor(
     private val repository: CurrencyRepository
 ) {
-    operator fun invoke(list: List<CurrencyEntity>): Flow<Resource<List<Currency>>> = flow {
+    operator fun invoke(list: List<CurrencyInfo>): Flow<Resource<List<Currency>>> = flow {
         try {
             repository.addCurrencies(list)
             val currencies = list.map {

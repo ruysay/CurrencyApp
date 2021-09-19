@@ -2,7 +2,7 @@ package com.lccoding.currencyapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.lccoding.currencyapp.data.local.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyInfo
 import com.lccoding.currencyapp.domain.use_case.add_currencies.AddCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.get_currencies.GetCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.sort_currencies.SortCurrenciesUseCase
@@ -98,8 +98,8 @@ class CurrencyViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun addCurrencyAndObserveResultIsNotEmpty() = runBlocking {
-        val setA = CurrencyEntity(id = "abc", name = "123", symbol = "abc123")
-        val setB = CurrencyEntity(id = "def", name = "456", symbol = "def456")
+        val setA = CurrencyInfo(id = "abc", name = "123", symbol = "abc123")
+        val setB = CurrencyInfo(id = "def", name = "456", symbol = "def456")
         val list = listOf(setA, setB)
 
         currencyViewModel.addCurrencies(list)

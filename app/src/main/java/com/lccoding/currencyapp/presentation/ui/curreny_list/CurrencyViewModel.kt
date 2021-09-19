@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lccoding.currencyapp.common.Resource
-import com.lccoding.currencyapp.data.local.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyInfo
 import com.lccoding.currencyapp.domain.model.Currency
 import com.lccoding.currencyapp.domain.use_case.add_currencies.AddCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.get_currencies.GetCurrenciesUseCase
@@ -65,7 +65,7 @@ class CurrencyViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun addCurrencies(list: List<CurrencyEntity>) {
+    fun addCurrencies(list: List<CurrencyInfo>) {
         addCurrenciesUseCase(list).onEach { result ->
             when (result) {
                 is Resource.Success -> {
