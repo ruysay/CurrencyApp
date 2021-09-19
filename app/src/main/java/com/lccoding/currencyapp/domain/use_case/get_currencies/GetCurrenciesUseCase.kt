@@ -15,7 +15,7 @@ class GetCurrenciesUseCase @Inject constructor(
     operator fun invoke(): Flow<Resource<List<Currency>>> = flow {
         try {
             emit(Resource.Loading<List<Currency>>())
-            val currencies = repository.getCurrencies().value?.map { it.toCurrency() }
+            val currencies = repository.getCurrencies().map { it.toCurrency() }
             emit(Resource.Success<List<Currency>>(currencies ?: emptyList()))
 
         } catch (e: IOException) {

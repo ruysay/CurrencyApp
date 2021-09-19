@@ -12,42 +12,18 @@ import com.google.gson.reflect.TypeToken
 import com.lccoding.currencyapp.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @Database(entities = [CurrencyEntity::class], version = 1)
 abstract class CurrencyDatabase: RoomDatabase() {
     abstract fun getCurrencyDao(): CurrencyDao
-
-    private class CurrencyDatabaseCallback(
-        private val scope: CoroutineScope,
-        private val resources: Resources
-    ) : RoomDatabase.Callback() {
-
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-            INSTANCE?.let { database ->
-                scope.launch {
-                    val currencyDao = database.getCurrencyDao()
-                    prePopulateDatabase(currencyDao)
-                }
-            }
-        }
-
-        private suspend fun prePopulateDatabase(currencyDao: CurrencyDao) {
-            val jsonString = resources.openRawResource(R.raw.currencies).bufferedReader().use {
-                it.readText()
-            }
-            val typeToken = object : TypeToken<List<CurrencyEntity>>() {}.type
-            val currencies = Gson().fromJson<List<CurrencyEntity>>(jsonString, typeToken)
-            currencyDao.insertAllCurrencies(currencies)
-        }
-    }
 
     companion object {
 
         @Volatile
         private var INSTANCE: CurrencyDatabase? = null
 
-        fun getDatabase(context: Context, coroutineScope: CoroutineScope, resources: Resources): CurrencyDatabase {
+        fun getDatabase(context: Context): CurrencyDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -57,9 +33,20 @@ abstract class CurrencyDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(context.applicationContext,
                     CurrencyDatabase::class.java,
                     "currencies_database")
-                    .addCallback(CurrencyDatabaseCallback(coroutineScope, resources))
-                    .build()
+                    .addCallback(object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            Timber.d("checkInject: db onCreate")
+                        }
+
+                        override fun onOpen(db: SupportSQLiteDatabase) {
+                            super.onOpen(db)
+                            Timber.d("checkInject: db onOpen")
+                        }
+                    }).build()
+
                 INSTANCE = instance
+                Timber.d("checkInject: db: $instance")
                 return instance
             }
         }

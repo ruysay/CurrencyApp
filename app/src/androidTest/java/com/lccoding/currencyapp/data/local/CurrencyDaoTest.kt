@@ -1,10 +1,12 @@
-package com.lccoding.currencyapp.data
+package com.lccoding.currencyapp.data.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.lccoding.currencyapp.data.CurrencyEntity
 import com.lccoding.currencyapp.data.dao.CurrencyDao
-import com.lccoding.currencyapp.utils.getValue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.Matchers
 import org.junit.Before
 import org.junit.Rule
@@ -32,9 +34,21 @@ class CurrencyDaoTest : DbTest() {
         }
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun testGetSets() {
-        val list = getValue(currencyDao.getAllCurrencies())
+    fun testGetSets() = runBlockingTest{
+        val list = currencyDao.getAllCurrencies()
+        assertThat(list.size, Matchers.equalTo(2))
+        assertThat(list[0].id, Matchers.equalTo(setA.id))
+        assertThat(list[1].id, Matchers.equalTo(setB.id))
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun testViewModel() = runBlockingTest{
+//        val list = getValue(currencyDao.getAllCurrencies())
+
+        val list = currencyDao.getAllCurrencies()
         assertThat(list.size, Matchers.equalTo(2))
         assertThat(list[0].id, Matchers.equalTo(setA.id))
         assertThat(list[1].id, Matchers.equalTo(setB.id))

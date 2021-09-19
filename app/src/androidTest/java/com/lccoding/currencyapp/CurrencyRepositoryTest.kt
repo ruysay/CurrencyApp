@@ -1,4 +1,4 @@
-package com.lccoding.currencyapp.repository
+package com.lccoding.currencyapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.lccoding.currencyapp.data.CurrencyDatabase

@@ -15,8 +15,8 @@ class SortCurrenciesUseCase @Inject constructor(
     operator fun invoke(): Flow<Resource<List<Currency>>> = flow {
         try {
             emit(Resource.Loading<List<Currency>>())
-            var currencies = repository.getCurrencies().value?.map { it.toCurrency() }
-            currencies = currencies?.sortedBy {
+            var currencies = repository.getSortedCurrencies().map { it.toCurrency() }
+            currencies = currencies.sortedBy {
                 it.name
             }
             emit(Resource.Success<List<Currency>>(currencies ?: emptyList()))
