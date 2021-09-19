@@ -12,7 +12,6 @@ import com.google.android.material.navigation.NavigationBarView
 import com.lccoding.currencyapp.R
 import com.lccoding.currencyapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
@@ -26,12 +25,12 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         val view = binding.root
         setContentView(view)
 
-        Timber.d("checkClick - start")
-
-
         navController = findNavController(R.id.nav_host_fragment_content_main)
         setupBottomNavBar()
+        setupSelectedItemObserver()
+    }
 
+    private fun setupSelectedItemObserver() {
         currencyViewModel.selectedItem.observe(this, Observer { currency ->
             Toast.makeText(this, "Selected ${currency.name}", Toast.LENGTH_SHORT).show()
             currency?.let {

@@ -43,6 +43,8 @@ class CurrencyListFragment : Fragment() {
                     .VERTICAL
             )
         )
+        binding.stateText.text = "Please tab Fetch List button"
+
         adapter = CurrencyAdapter(mutableListOf())
         binding.currencyList.adapter = adapter
 

@@ -1,12 +1,11 @@
 package com.lccoding.currencyapp.presentation.ui.main
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.lccoding.currencyapp.databinding.ItemCurrencyBinding
 import com.lccoding.currencyapp.domain.model.Currency
-import timber.log.Timber
 
 class CurrencyAdapter(private val currencies: MutableList<Currency>) :
     RecyclerView.Adapter<CurrencyAdapter.ViewHolder>() {
@@ -40,7 +39,6 @@ class CurrencyAdapter(private val currencies: MutableList<Currency>) :
     }
 
     fun setOnItemTapListener(listener: ((Currency) -> Unit)) {
-        Timber.d("checkClick - 1")
         this.listener = listener
     }
 
@@ -54,8 +52,6 @@ class CurrencyAdapter(private val currencies: MutableList<Currency>) :
             binding.symbol.text = "${item.symbol}"
 
             binding.itemContainer.setOnClickListener {
-                Timber.d("checkClick - 2")
-
                 listener?.invoke(item)
             }
         }

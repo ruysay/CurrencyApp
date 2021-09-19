@@ -36,17 +36,14 @@ abstract class CurrencyDatabase: RoomDatabase() {
                     .addCallback(object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
-                            Timber.d("checkInject: db onCreate")
                         }
 
                         override fun onOpen(db: SupportSQLiteDatabase) {
                             super.onOpen(db)
-                            Timber.d("checkInject: db onOpen")
                         }
                     }).build()
 
                 INSTANCE = instance
-                Timber.d("checkInject: db: $instance")
                 return instance
             }
         }

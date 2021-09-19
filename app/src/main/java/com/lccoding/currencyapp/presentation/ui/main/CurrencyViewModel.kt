@@ -56,7 +56,6 @@ class CurrencyViewModel @Inject constructor(
             when(result) {
                 is Resource.Success -> {
                     _state.value = CurrencyListState(currencies = result.data ?: emptyList())
-                    Timber.d("checkState - success: $_state v.s $state")
                 }
                 is Resource.Error -> {
                     _state.value = CurrencyListState(error =  result.message ?:

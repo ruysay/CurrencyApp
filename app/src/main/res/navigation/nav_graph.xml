@@ -15,7 +15,11 @@
             app:argType="com.lccoding.currencyapp.domain.model.Currency" />
         <action
             android:id="@+id/action_currencyListFragment_to_currencyDetailFragment"
-            app:destination="@id/currencyDetailFragment" />
+            app:destination="@id/currencyDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/currencyDetailFragment"
