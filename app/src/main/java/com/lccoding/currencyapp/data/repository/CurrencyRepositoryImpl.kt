@@ -5,7 +5,7 @@ import android.content.res.Resources
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.lccoding.currencyapp.R
-import com.lccoding.currencyapp.data.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyEntity
 import com.lccoding.currencyapp.data.dao.CurrencyDao
 import com.lccoding.currencyapp.domain.repository.CurrencyRepository
 import kotlinx.coroutines.Dispatchers

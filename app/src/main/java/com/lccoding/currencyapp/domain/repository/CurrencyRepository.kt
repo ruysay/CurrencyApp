@@ -1,6 +1,6 @@
 package com.lccoding.currencyapp.domain.repository
 
-import com.lccoding.currencyapp.data.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyEntity
 
 interface CurrencyRepository {
     suspend fun getCurrencies(): List<CurrencyEntity>

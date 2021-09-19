@@ -1,7 +1,7 @@
 package com.lccoding.currencyapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.lccoding.currencyapp.data.CurrencyDatabase
+import com.lccoding.currencyapp.data.local.CurrencyDatabase
 import com.lccoding.currencyapp.data.dao.CurrencyDao
 import com.lccoding.currencyapp.domain.repository.CurrencyRepository
 import kotlinx.coroutines.CoroutineScope

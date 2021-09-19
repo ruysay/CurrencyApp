@@ -1,7 +1,7 @@
 package com.lccoding.currencyapp.domain.use_case.sort_currencies
 
 import com.lccoding.currencyapp.common.Resource
-import com.lccoding.currencyapp.data.toCurrency
+import com.lccoding.currencyapp.data.local.toCurrency
 import com.lccoding.currencyapp.domain.model.Currency
 import com.lccoding.currencyapp.domain.repository.CurrencyRepository
 import kotlinx.coroutines.flow.Flow

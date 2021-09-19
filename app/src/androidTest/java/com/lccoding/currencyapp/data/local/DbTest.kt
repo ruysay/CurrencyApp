@@ -3,7 +3,6 @@ package com.lccoding.currencyapp.data.local
 import androidx.arch.core.executor.testing.CountingTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.lccoding.currencyapp.data.CurrencyDatabase
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

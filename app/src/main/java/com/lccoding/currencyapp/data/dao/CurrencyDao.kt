@@ -1,7 +1,7 @@
 package com.lccoding.currencyapp.data.dao
 
 import androidx.room.*
-import com.lccoding.currencyapp.data.CurrencyEntity
+import com.lccoding.currencyapp.data.local.CurrencyEntity
 
 @Dao
 interface CurrencyDao {

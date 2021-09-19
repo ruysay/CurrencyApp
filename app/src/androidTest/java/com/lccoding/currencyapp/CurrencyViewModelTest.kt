@@ -24,6 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class CurrencyViewModelTest {
+
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()

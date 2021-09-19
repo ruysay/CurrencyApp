@@ -1,4 +1,4 @@
-package com.lccoding.currencyapp.data
+package com.lccoding.currencyapp.data.local
 
 import android.os.Parcelable
 import androidx.room.Entity

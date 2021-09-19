@@ -1,7 +1,6 @@
 package com.lccoding.currencyapp.repository
 
-import com.lccoding.currencyapp.data.CurrencyEntity
-import com.lccoding.currencyapp.domain.model.Currency
+import com.lccoding.currencyapp.data.local.CurrencyEntity
 import com.lccoding.currencyapp.domain.repository.CurrencyRepository
 
 class FakeCurrencyRepository : CurrencyRepository {
