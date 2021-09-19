@@ -2,6 +2,7 @@ package com.lccoding.currencyapp.data.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth.assertThat
 import com.lccoding.currencyapp.data.CurrencyEntity
 import com.lccoding.currencyapp.data.dao.CurrencyDao
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -12,7 +13,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.Assert.assertThat
 
 @RunWith(AndroidJUnit4::class)
 class CurrencyDaoTest : DbTest() {
@@ -38,19 +38,8 @@ class CurrencyDaoTest : DbTest() {
     @Test
     fun testGetSets() = runBlockingTest{
         val list = currencyDao.getAllCurrencies()
-        assertThat(list.size, Matchers.equalTo(2))
-        assertThat(list[0].id, Matchers.equalTo(setA.id))
-        assertThat(list[1].id, Matchers.equalTo(setB.id))
-    }
-
-    @ExperimentalCoroutinesApi
-    @Test
-    fun testViewModel() = runBlockingTest{
-//        val list = getValue(currencyDao.getAllCurrencies())
-
-        val list = currencyDao.getAllCurrencies()
-        assertThat(list.size, Matchers.equalTo(2))
-        assertThat(list[0].id, Matchers.equalTo(setA.id))
-        assertThat(list[1].id, Matchers.equalTo(setB.id))
+        assertThat(list.size).isEqualTo(2)
+        assertThat(list[0].id).isEqualTo(setA.id)
+        assertThat(list[1].id).isEqualTo(setB.id)
     }
 }

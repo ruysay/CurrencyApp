@@ -51,14 +51,14 @@ class CurrencyUseCaseTest: DbTest() {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun testFirstFlow() = runBlocking {
+    fun testUseCaseGivesEmptyMessage() = runBlocking {
         val firstItem = getCurrenciesUseCase.invoke().first()
         assertTrue(firstItem.message == null)
     }
 
     @ExperimentalCoroutinesApi
     @Test
-    fun testSecondFlow() = runBlocking {
+    fun useCaseGivesNotEmptyData() = runBlocking {
         val secondItem = getCurrenciesUseCase.invoke().drop(1).first()
         assertTrue(secondItem.data?.isNotEmpty() == true)
     }
