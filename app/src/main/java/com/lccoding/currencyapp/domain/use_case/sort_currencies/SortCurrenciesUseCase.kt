@@ -19,7 +19,7 @@ class SortCurrenciesUseCase @Inject constructor(
             currencies = currencies.sortedBy {
                 it.name
             }
-            emit(Resource.Success<List<Currency>>(currencies ?: emptyList()))
+            emit(Resource.Success<List<Currency>>(currencies))
 
         } catch (e: IOException) {
             emit(Resource.Error<List<Currency>>(e.localizedMessage ?: "Unexpected Error Occurred"))

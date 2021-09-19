@@ -11,6 +11,8 @@ import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationBarView
 import com.lccoding.currencyapp.R
 import com.lccoding.currencyapp.databinding.ActivityMainBinding
+import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyListFragmentDirections
+import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

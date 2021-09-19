@@ -16,7 +16,7 @@ class GetCurrenciesUseCase @Inject constructor(
         try {
             emit(Resource.Loading<List<Currency>>())
             val currencies = repository.getCurrencies().map { it.toCurrency() }
-            emit(Resource.Success<List<Currency>>(currencies ?: emptyList()))
+            emit(Resource.Success<List<Currency>>(currencies))
 
         } catch (e: IOException) {
             emit(Resource.Error<List<Currency>>(e.localizedMessage ?: "Unexpected Error Occurred"))

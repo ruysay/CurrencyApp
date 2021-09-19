@@ -1,8 +1,7 @@
-package com.lccoding.currencyapp.presentation.ui.main
+package com.lccoding.currencyapp.presentation.ui.curreny_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.lccoding.currencyapp.databinding.ItemCurrencyBinding
 import com.lccoding.currencyapp.domain.model.Currency

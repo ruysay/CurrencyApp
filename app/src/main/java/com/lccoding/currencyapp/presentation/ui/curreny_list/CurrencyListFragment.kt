@@ -1,4 +1,4 @@
-package com.lccoding.currencyapp.presentation.ui.main
+package com.lccoding.currencyapp.presentation.ui.curreny_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -43,7 +43,7 @@ class CurrencyListFragment : Fragment() {
                     .VERTICAL
             )
         )
-        binding.stateText.text = "Please tab Fetch List button"
+        binding.stateText.text = "Please tab \"Fetch List\" button"
 
         adapter = CurrencyAdapter(mutableListOf())
         binding.currencyList.adapter = adapter

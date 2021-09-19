@@ -1,4 +1,4 @@
-package com.lccoding.currencyapp.presentation.ui.main
+package com.lccoding.currencyapp.presentation.ui.curreny_list
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

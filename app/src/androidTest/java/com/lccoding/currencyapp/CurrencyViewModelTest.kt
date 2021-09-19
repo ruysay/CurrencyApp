@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.lccoding.currencyapp.domain.use_case.get_currencies.GetCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.sort_currencies.SortCurrenciesUseCase
 import com.lccoding.currencyapp.presentation.ui.curreny_list.components.CurrencyListState
-import com.lccoding.currencyapp.presentation.ui.main.CurrencyViewModel
+import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyViewModel
 import com.lccoding.currencyapp.repository.FakeCurrencyRepository
 import com.lccoding.currencyapp.utils.getValue
 import io.mockk.impl.annotations.MockK

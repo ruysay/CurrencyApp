@@ -7,7 +7,7 @@ import com.lccoding.currencyapp.data.local.DbTest
 import com.lccoding.currencyapp.data.repository.CurrencyRepositoryImpl
 import com.lccoding.currencyapp.domain.use_case.get_currencies.GetCurrenciesUseCase
 import com.lccoding.currencyapp.domain.use_case.sort_currencies.SortCurrenciesUseCase
-import com.lccoding.currencyapp.presentation.ui.main.CurrencyViewModel
+import com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyViewModel
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop

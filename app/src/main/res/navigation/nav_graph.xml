@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/currencyListFragment"
-        android:name="com.lccoding.currencyapp.presentation.ui.main.CurrencyListFragment"
+        android:name="com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyListFragment"
         android:label="@string/currency_list_fragment_label">
 
         <argument
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/currencyDetailFragment"
-        android:name="com.lccoding.currencyapp.presentation.ui.main.CurrencyDetailFragment"
+        android:name="com.lccoding.currencyapp.presentation.ui.curreny_list.CurrencyDetailFragment"
         android:label="@string/currency_detail_fragment_label">
 
         <argument

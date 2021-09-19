@@ -1,4 +1,4 @@
-package com.lccoding.currencyapp.presentation.ui.main
+package com.lccoding.currencyapp.presentation.ui.curreny_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
