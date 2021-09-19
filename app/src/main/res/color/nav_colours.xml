@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ * Developed by Lawrence Chiang and Steven Lee
+  ~ * Copyright © 2020 Swann Communications. All rights reserved.
+  ~ * Last modified Steven 28/01/20 11:10 AM
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/light_blue" android:state_checked="true" />
+    <item android:color="@color/unselected" />
+</selector>

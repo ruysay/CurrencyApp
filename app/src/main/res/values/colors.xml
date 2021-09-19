@@ -7,4 +7,33 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorAccent">@color/light_blue</color>
+
+    <color name="gray">#747474</color>
+    <color name="dark_gray">#333</color>
+    <color name="light_gray">#EEE</color>
+    <color name="edit_gray">#B9B9B9</color>
+    <color name="live_view_background">#3D3F40</color>
+
+    <color name="unselected">#697282</color>
+    <color name="background_gray">#DDD</color>
+    <color name="shimmer_light">#EEE</color>
+    <color name="card_view_white">#FEFEFE</color>
+    <color name="main_blue_translucent">#cc0199dd</color>
+
+    <color name="text_light">#555555</color>
+    <color name="text_normal">#4A4A4A</color>
+    <color name="text_title">#231f20</color>
+
+    <color name="main_blue">#0199dd</color>
+    <color name="light_blue">#00aeef</color>
+    <color name="dark_blue">#004a98</color>
+    <color name="dim_blue">#004a9f</color>
+
+    <color name="common_item_background">#3A3B3E</color>
+
+
 </resources>
