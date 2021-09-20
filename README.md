@@ -38,7 +38,6 @@ This layer provides all the repositories which the domain layer can use.
 *DataBase  
 *Memory
 
-# Architecture and Data Flow
 The diagram below shows the data flow in this project.
 Please note **Remote Data Source**   has not been implemented in the master branch.
 ![project structure](https://i.imgur.com/qKJlDlo.png)
