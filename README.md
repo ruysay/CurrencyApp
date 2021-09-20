@@ -36,7 +36,7 @@ The domain layer contains all the **use cases** of the application.
 ### 3. Data Layer
 This layer provides all the repositories which the domain layer can use.
 
-*Network 
+*Network  
 *DataBase  
 *Memory
 
