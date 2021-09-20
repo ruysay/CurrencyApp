@@ -28,13 +28,15 @@ An UI component like `Activity and Fragment` will talk to a `ViewModel` and a `V
 *LiveData<T>
 
 ### 2. Domain Layer
-The domain layer contains all the **use cases** of the application..
+The domain layer contains all the **use cases** of the application.
+
 *UseCases  
 *Repository (implemented in Data Layer)
 
 ### 3. Data Layer
 This layer provides all the repositories which the domain layer can use.
-*Network  
+
+*Network 
 *DataBase  
 *Memory
 
