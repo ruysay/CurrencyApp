@@ -12,6 +12,7 @@
         android:layout_width="@dimen/button_height"
         android:layout_height="@dimen/button_height"
         android:background="@drawable/circular_button"
+        android:backgroundTint="@color/button_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,9 +28,10 @@
         app:layout_constraintEnd_toEndOf="@id/image"
         app:layout_constraintBottom_toBottomOf="@id/image"
         android:text="I"
-        android:textSize="22sp"
+        android:textSize="@dimen/text_subtitle"
         android:textColor="@color/white"
         android:gravity="center"
+        android:fontFamily="@font/d_din_bold"
         />
 
     <TextView
@@ -37,23 +39,33 @@
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
         android:text="Name"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintEnd_toStartOf="@id/symbol"
         android:gravity="center_vertical"
         android:lines="1"
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:textSize="@dimen/text_title"
+        android:textColor="@color/black"
+        android:fontFamily="@font/d_din"
+        />
 
     <TextView
         android:id="@+id/symbol"
-        style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/margin_small"
         android:text="Symbol"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toStartOf="@id/next"/>
+        android:gravity="center_vertical|end"
+        app:layout_constraintEnd_toStartOf="@id/next"
+        android:textSize="@dimen/text_large"
+        android:textColor="@color/text_light"
+        android:fontFamily="@font/d_din_exp_bold"
+        />
 
     <ImageView
         android:id="@+id/next"

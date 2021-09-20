@@ -23,6 +23,12 @@
     <color name="shimmer_light">#EEE</color>
     <color name="card_view_white">#FEFEFE</color>
     <color name="main_blue_translucent">#cc0199dd</color>
+    <color name="main_gray_translucent">#ee747474</color>
+    <color name="translucent_background">#ee000000</color>
+    <color name="transparent_black">#66231f20</color>
+    <color name="button_background">#4a4a4a</color>
+    <color name="transparent_grey">#AA4A4A4A</color>
+    <color name="gray_translucent">#44747474</color>
 
     <color name="text_light">#555555</color>
     <color name="text_normal">#4A4A4A</color>
