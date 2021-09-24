@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ * Developed by Lawrence Chiang and Steven Lee
-  ~ * Copyright © 2020 Swann Communications. All rights reserved.
-  ~ * Last modified Steven 30/04/20 4:26 PM
-  -->
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="20dp"

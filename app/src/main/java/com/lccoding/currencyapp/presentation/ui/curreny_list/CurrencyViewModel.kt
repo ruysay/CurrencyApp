@@ -65,19 +65,21 @@ class CurrencyViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun addCurrencies(list: List<CurrencyInfo>) {
+    fun addCurrencies(list: List<CurrencyInfo>, updateState: Boolean? = false) {
         addCurrenciesUseCase(list).onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _state.value = CurrencyListState(currencies = result.data ?: emptyList())
-                }
-                is Resource.Error -> {
-                    _state.value = CurrencyListState(
-                        error = result.message ?: "Unexpected error occurred"
-                    )
-                }
-                is Resource.Loading -> {
-                    _state.value = CurrencyListState(isLoading = true)
+            if(updateState == true) {
+                when (result) {
+                    is Resource.Success -> {
+                        _state.value = CurrencyListState(currencies = result.data ?: emptyList())
+                    }
+                    is Resource.Error -> {
+                        _state.value = CurrencyListState(
+                            error = result.message ?: "Unexpected error occurred"
+                        )
+                    }
+                    is Resource.Loading -> {
+                        _state.value = CurrencyListState(isLoading = true)
+                    }
                 }
             }
         }.launchIn(viewModelScope)

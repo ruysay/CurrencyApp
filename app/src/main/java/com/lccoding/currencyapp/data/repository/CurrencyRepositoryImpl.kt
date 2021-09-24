@@ -15,8 +15,7 @@ class CurrencyRepositoryImpl @Inject constructor(
         return@withContext dao.getAllCurrencies()
     }
 
-    override suspend fun getSortedCurrencies(): List<CurrencyInfo> =
-        withContext(Dispatchers.IO) {
+    override suspend fun getSortedCurrencies(): List<CurrencyInfo> = withContext(Dispatchers.IO) {
             return@withContext dao.getSortedCurrencies()
         }
 

@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setupBottomNavBar()
         setupSelectedItemObserver()
         initFirstLaunchData()
-
     }
 
     private fun setupSelectedItemObserver() {
@@ -63,7 +62,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             }
             val typeToken = object : TypeToken<List<CurrencyInfo>>() {}.type
             val currencies = Gson().fromJson<List<CurrencyInfo>>(jsonString, typeToken)
-            currencyViewModel.addCurrencies(currencies)
+            currencyViewModel.addCurrencies(currencies, false)
             SharedPreferenceUtil(application).setFirstLaunch(false)
         }
     }
